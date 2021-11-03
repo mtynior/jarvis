@@ -9,41 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class RequestTests: XCTestCase {
-    static var allTests = [
-        // Init
-        ("testDefaultInit", testDefaultInit),
-        ("testURLInit", testURLInit),
-        ("testStringURLInit", testStringURLInit),
-        
-        // Urls
-        ("testUrl", testUrl),
-        ("testEndpoint", testEndpoint),
-        
-        // Http methods
-        ("testDefaultHttpMethod", testDefaultHttpMethod),
-        ("testHttpMethod", testHttpMethod),
-        ("testOption", testOption),
-        ("testGet", testGet),
-        ("testHead", testHead),
-        ("testPost", testPost),
-        ("testPut", testPut),
-        ("testPatch", testPatch),
-        ("testDelete", testDelete),
-        ("testTrace", testTrace),
-        ("testConnect", testConnect),
-        
-        // Headers
-        ("testAddHeader", testAddHeader),
-        ("testAddHeaders", testAddHeaders),
-        ("testSetHeader", testSetHeader),
-        ("testRemoveHeader", testRemoveHeader),
-        
-        // Body
-        ("testBody", testConnect),
-        
-        // Description
-        ("testDescription", testDescription)
-    ]
 }
 
 // MARK: - Init

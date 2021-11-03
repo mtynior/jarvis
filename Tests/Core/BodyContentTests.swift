@@ -9,16 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class BodyContentTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testEmptyInit", testEmptyInit),
-        ("testInit", testInit),
-        ("testJsonInit", testJsonInit),
-        ("testStringInit", testStringInit),
-        
-        // Description
-        ("testDescription", testDescription)
-    ]
 }
 
 // MARK: - Initialization & properties

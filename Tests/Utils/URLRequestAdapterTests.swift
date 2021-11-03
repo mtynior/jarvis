@@ -8,26 +8,7 @@
 import XCTest
 @testable import Jarvis
 
-final class URLRequestAdapterTests: XCTestCase {
-    static var allTests = [
-        // Map URLs
-        ("testMapFullUrl", testMapFullUrl),
-        ("testMapEndpoint", testMapEndpoint),
-        ("testMapNilUrl", testMapNilUrl),
-        
-        // Map request fields
-        ("testMapHeaders", testMapHeaders),
-        ("testMapMethod", testMapMethod),
-        
-        // Map Body
-        ("testMapBodyData", testMapBodyData),
-        ("testMapContentTypeHeader", testMapContentTypeHeader),
-        ("testSkipMapContentTypeHeader", testSkipMapContentTypeHeader),
-        
-        // Map other options
-        ("testMapOtherOptions", testMapOtherOptions)
-    ]
-    
+final class URLRequestAdapterTests: XCTestCase {    
     var adpater: URLRequestAdapter!
     
     override func setUp() {

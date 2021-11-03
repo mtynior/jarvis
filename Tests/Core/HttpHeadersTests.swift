@@ -9,34 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class HttpHeadersTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testEmptyHeadersAfterInit", testEmptyHeadersAfterInit),
-        ("testInitFromDictionary", testInitFromDictionary),
-        ("testCount", testCount),
-        
-        // Modifying
-        ("testAddField", testAddField),
-        ("testAddExistingHeaders", testAddExistingHeaders),
-        ("testAddCollectionOfFields", testAddCollectionOfFields),
-        ("testAddMultipleFieldsWithSameName", testAddMultipleFieldsWithSameName),
-        ("testSetByAddingNewField", testSetByAddingNewField),
-        ("testSetByReplacingAllExisingFields", testSetByReplacingAllExisingFields),
-        ("testRemoveField", testRemoveField),
-        
-        // Querying
-        ("testGetFirst", testGetFirst),
-        ("testGetLast", testGetLast),
-        ("testGetAll", testGetAll),
-        ("testGetAllNames", testGetAllNames),
-        ("testGetAllValues", testGetAllValues),
-
-        // Equatable
-        ("testEqual", testEqual),
-        
-        // Description
-        ("testDescription", testDescription)
-    ]
 }
 
 // MARK: - Initialization & properties

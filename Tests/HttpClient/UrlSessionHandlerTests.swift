@@ -9,12 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class UrlSessionHandlerTests: XCTestCase {
-    static var allTests = [
-        // URLSessionDataDelegate
-        ("testDidReceiveData", testDidReceiveData),
-        ("testDidCompleteWithError", testDidCompleteWithError)
-    ]
-    
     var httpClient: HttpClient?
     
     override func setUp() {

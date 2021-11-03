@@ -9,11 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class HttpClientTests_NetworkTaskDelegate: XCTestCase {
-    static var allTests = [
-        ("testTaskFinishedWithResultRemovesTaskFromListOfActiveTasks", testTaskFinishedWithResultRemovesTaskFromListOfActiveTasks),
-        ("testDataTaskFor", testDataTaskFor)
-    ]
-    
     func testTaskFinishedWithResultRemovesTaskFromListOfActiveTasks() {
         // given
         let client = HttpClient()

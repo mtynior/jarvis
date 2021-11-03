@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal protocol NetworkTaskDelegate: class {
+internal protocol NetworkTaskDelegate: AnyObject {
     func didFinishTask(_ task: NetworkTask)
     func dataTaskFor(urlRequest: URLRequest) -> URLSessionDataTask?
     func downloadTaskFor(urlRequest: URLRequest) -> URLSessionDownloadTask?

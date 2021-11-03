@@ -9,22 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class NetworkTaskRepositoryTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testDefaultInit", testDefaultInit),
-        ("testCount", testCount),
-        
-        // Items Manipulation
-        ("testAdd", testAdd),
-        ("testRemove", testRemove),
-        ("testRemoveAt", testRemoveAt),
-        ("testRemoveAtOutOfBounds", testRemoveAtOutOfBounds),
-        ("testRemoveAll", testRemoveAll),
-        
-        // Subsripts
-        ("testIndexSubsript", testIndexSubsript),
-        ("testSessionTaskSubsript", testSessionTaskSubsript)
-    ]
 }
 
 // MARK: - // Initialization & properties

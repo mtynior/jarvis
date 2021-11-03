@@ -9,22 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class MediaTypeTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testInit", testInit),
-        ("testType", testType),
-        ("testSubtype", testSubtype),
-        
-        // Equatable
-        ("testEquality", testEquality),
-        
-        // Description
-        ("testDescription", testDescription),
-        
-        // MediaTypeConvertible
-        ("testConvertFromMediatype", testConvertFromMediatype),
-        ("testConvertFromString", testConvertFromString)
-    ]
 }
 
 // MARK: - Initialization & properties

@@ -9,33 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class HttpClientTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testDefaultInit", testDefaultInit),
-        ("testDeinitFinishesActiveTasks", testDeinitFinishesActiveTasks),
-        
-        //  Builder
-        ("testSetConfiguration", testSetConfiguration),
-        ("testSetBaseUrl", testSetBaseUrl),
-        
-        // Sending Http Request
-        ("testSendReturnFetchTask", testSendReturnFetchTask),
-        ("testSendAutomaticallyStartRequest", testSendAutomaticallyStartRequest),
-        ("testSendDoesNotAutomaticallyStartRequest", testSendDoesNotAutomaticallyStartRequest),
-        ("testSendAddTaskToActiveTasks", testSendAddTaskToListOfActiveTasks),
-        
-        // Download data
-        ("testDownloadReturnDownloadTask", testDownloadReturnDownloadTask),
-        ("testDownloadAutomaticallyStartRequest", testDownloadAutomaticallyStartRequest),
-        ("testDownloadDoesNotAutomaticallyStartRequest", testDownloadDoesNotAutomaticallyStartRequest),
-        ("testDownloadAddTaskToListOfActiveTasks", testDownloadAddTaskToListOfActiveTasks),
-        
-        // Download data
-        ("testUploadReturnUploadTask", testUploadReturnUploadTask),
-        ("testUploadAutomaticallyStartRequest", testUploadAutomaticallyStartRequest),
-        ("testUploadDoesNotAutomaticallyStartRequest", testUploadDoesNotAutomaticallyStartRequest),
-        ("testUploadAddTaskToListOfActiveTasks", testUploadAddTaskToListOfActiveTasks)
-    ]
 }
 
 // MARK: - Initialization & properties
@@ -312,7 +285,7 @@ extension HttpClientTests {
             .body(BodyContent(string: "Hello world"))
         
         // when
-        let actualTask = client.download(request)
+        let actualTask = client.upload(request)
 
         // then
         let containsTask = client.activeTasks.contains(where: { $0.id == actualTask.id })
