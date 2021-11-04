@@ -58,10 +58,6 @@ public final class DownloadTask: DownloadingTask {
         }
     }
     
-    deinit {
-        print("[DEINIT] DownloadTask \(id.uuidString)")
-    }
-    
     public func resume() {
         guard state.canTransitionTo(.inProgress) else {
             return

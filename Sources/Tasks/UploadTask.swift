@@ -53,10 +53,6 @@ public final class UploadTask: DataFetchingTask {
         }
     }
     
-    deinit {
-        print("[DEINIT] UploadTask \(id.uuidString)")
-    }
-    
     public func resume() {
         guard state.canTransitionTo(.inProgress) else {
             return

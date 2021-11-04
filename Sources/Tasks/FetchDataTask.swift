@@ -52,10 +52,6 @@ public final class FetchDataTask: DataFetchingTask {
         }
     }
     
-    deinit {
-        print("[DEINIT] DataTask \(id.uuidString)")
-    }
-    
     public func resume() {
         guard state.canTransitionTo(.inProgress) else {
             return
