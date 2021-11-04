@@ -47,6 +47,19 @@ extension RequestTests {
         // then
         XCTAssertEqual(request.target, .url(expectedUrl))
     }
+    
+    func testMethodInit() {
+        // given
+        let expectedUrl = HttpUrl("https://apple.com")
+        let expectedMehtod = HttpMethod.patch
+
+        // when
+        let request = Request(url: expectedUrl, method: expectedMehtod)
+        
+        // then
+        XCTAssertEqual(request.target, .url(expectedUrl))
+        XCTAssertEqual(request.method, expectedMehtod)
+    }
 }
 
 // MARK: - URLs

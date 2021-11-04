@@ -19,6 +19,11 @@ public struct Request {
     public init(url: HttpUrlConvertible) {
         self.target = .url(url.asHttpUrl())
     }
+    
+    public init(url: HttpUrlConvertible, method: HttpMethod) {
+        self.target = .url(url.asHttpUrl())
+        self.method = method
+    }
 }
 
 // MARK: - URLs
