@@ -1,6 +1,14 @@
-# Jarvis
-
-Simple HTTP Client
+<div align="center">
+    <h1>Jarvis</h1>
+    <h3>Simple HTTP Client</h3>
+</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/language-Swift-orange" />
+  <a href="https://github.com/mtynior/jarvis/actions/workflows/test_package_prod_env.yml">
+    <img src="https://github.com/mtynior/jarvis/actions/workflows/test_package_prod_env.yml/badge.svg?branch=main"/>
+  </a>
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+</p>
 
 ## Usage
 
