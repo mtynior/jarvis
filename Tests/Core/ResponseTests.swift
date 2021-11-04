@@ -9,15 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class ResponseTests: XCTestCase {
-    static var allTests = [
-        // Initialization and properties
-        ("testDefaultInit", testDefaultInit),
-        ("testIsSuccess", testIsSuccess),
-        ("testIsRedirection", testIsRedirection),
-        
-        // Description
-        ("testDescription", testDescription)
-    ]
 }
 
 // MARK: - Initialization and properties

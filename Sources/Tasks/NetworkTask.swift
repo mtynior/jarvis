@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol NetworkTask: class {
+public protocol NetworkTask: AnyObject {
     var id: UUID { get }
     var request: Request { get }
     var task: URLSessionTask? { get }

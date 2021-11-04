@@ -8,24 +8,7 @@
 import XCTest
 @testable import Jarvis
 
-final class HttpUrlTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testInit", testInit),
-        ("testInitFromString", testInitFromString),
-        ("testInitFromURL", testInitFromURL),
-        
-        // Builder
-        ("testSetScheme", testSetScheme),
-        ("testSetHost", testSetHost),
-        ("testSetPort", testSetPort),
-        
-        // Equatable
-        ("testEquality", testEquality),
-        
-        // Description
-        ("testDescription", testDescription)
-    ]
+final class HttpUrlTests: XCTestCase {      
 }
 
 // MARK: - Initialization & properties

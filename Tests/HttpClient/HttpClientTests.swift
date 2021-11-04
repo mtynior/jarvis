@@ -9,33 +9,6 @@ import XCTest
 @testable import Jarvis
 
 final class HttpClientTests: XCTestCase {
-    static var allTests = [
-        // Initialization & properties
-        ("testDefaultInit", testDefaultInit),
-        ("testDeinitFinishesActiveTasks", testDeinitFinishesActiveTasks),
-        
-        //  Builder
-        ("testSetConfiguration", testSetConfiguration),
-        ("testSetBaseUrl", testSetBaseUrl),
-        
-        // Sending Http Request
-        ("testSendReturnFetchTask", testSendReturnFetchTask),
-        ("testSendAutomaticallyStartRequest", testSendAutomaticallyStartRequest),
-        ("testSendDoesNotAutomaticallyStartRequest", testSendDoesNotAutomaticallyStartRequest),
-        ("testSendAddTaskToActiveTasks", testSendAddTaskToListOfActiveTasks),
-        
-        // Download data
-        ("testDownloadReturnDownloadTask", testDownloadReturnDownloadTask),
-        ("testDownloadAutomaticallyStartRequest", testDownloadAutomaticallyStartRequest),
-        ("testDownloadDoesNotAutomaticallyStartRequest", testDownloadDoesNotAutomaticallyStartRequest),
-        ("testDownloadAddTaskToListOfActiveTasks", testDownloadAddTaskToListOfActiveTasks),
-        
-        // Download data
-        ("testUploadReturnUploadTask", testUploadReturnUploadTask),
-        ("testUploadAutomaticallyStartRequest", testUploadAutomaticallyStartRequest),
-        ("testUploadDoesNotAutomaticallyStartRequest", testUploadDoesNotAutomaticallyStartRequest),
-        ("testUploadAddTaskToListOfActiveTasks", testUploadAddTaskToListOfActiveTasks)
-    ]
 }
 
 // MARK: - Initialization & properties
@@ -312,11 +285,61 @@ extension HttpClientTests {
             .body(BodyContent(string: "Hello world"))
         
         // when
-        let actualTask = client.download(request)
+        let actualTask = client.upload(request)
 
         // then
         let containsTask = client.activeTasks.contains(where: { $0.id == actualTask.id })
         XCTAssertTrue(containsTask)
+    }
+}
+
+// MARK: - Async
+@available(macOS 12.0.0, iOS 15, watchOS 8, tvOS 15, *)
+extension HttpClientTests {
+    func testAsyncSend() async throws {
+        // given
+        let client = HttpClient()
+        
+        let request = Request()
+            .url("https://httpbin.org/get")
+            .method(.get)
+        
+        // when
+        let response = try await client.send(request)
+        
+        // then
+        XCTAssertTrue(response.isSuccess)
+    }
+    
+    func testAsyncDownload() async throws {
+        // given
+        let client = HttpClient()
+        
+        let request = Request()
+            .addHeader(name: "accept", value: "image/jpeg")
+            .url("https://httpbin.org/image/jpeg")
+        
+        // when
+        let result = try await client.download(request)
+                
+        // then
+        XCTAssertNotNil(result.fileLocation)
+        XCTAssertTrue(result.reponse!.isSuccess)
+    }
+    
+    func testAsyncUpload() async throws {
+        // given
+        let client = HttpClient()
+        
+        let request = Request(url: "https://httpbin.org/post")
+            .method(.post)
+            .body(BodyContent(string:  "Hello world"))
+        
+        // when
+        let response = try await client.upload(request)
+                
+        // then
+        XCTAssertTrue(response.isSuccess)
     }
 }
 
