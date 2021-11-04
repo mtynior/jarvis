@@ -17,7 +17,7 @@ public final class URLRequestAdapter: URLRequestAdapting {
             return nil
         }
 
-        var urlRequest = URLRequest(url: url ,cachePolicy: configuration.cachePolicy, timeoutInterval: configuration.timeoutInterval)
+        var urlRequest = URLRequest(url: url, cachePolicy: configuration.cachePolicy, timeoutInterval: configuration.timeoutInterval)
         
         // Set headers
         request.headers.fields.forEach {

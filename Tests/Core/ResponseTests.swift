@@ -65,7 +65,6 @@ extension ResponseTests {
     }
 }
 
-
 // MARK: - Description
 extension ResponseTests {
     func testDescription() {

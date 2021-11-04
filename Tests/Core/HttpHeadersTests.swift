@@ -24,7 +24,7 @@ extension HttpHeadersTests {
     
     func testInitFromDictionary() {
         // given
-        let dictionary = ["Content-Type" : "application/json"]
+        let dictionary = ["Content-Type": "application/json"]
         
         // when
         let actualHeaders = HttpHeaders(dictionary: dictionary)
@@ -243,7 +243,7 @@ extension HttpHeadersTests {
         // given
         let fields = [
             HttpHeaders.Field(name: "Content-Type", value: "application/json"),
-            HttpHeaders.Field(name: "Cache-Control", value: "no-cache"),
+            HttpHeaders.Field(name: "Cache-Control", value: "no-cache")
         ]
         
         let headers = HttpHeaders(fields: fields)

@@ -104,7 +104,7 @@ public final class DownloadTask: DownloadingTask {
 }
 
 // MARK: - DownloadingTask
-internal extension DownloadTask{
+internal extension DownloadTask {
     func didFinishDownloadingTo(to location: URL) {
         do {
             downloadedFileLocation = try moveDownloadedFileIfNecessary(location)
@@ -146,8 +146,7 @@ private extension DownloadTask {
             result = .failure(error)
         } else if let urlResponse = task?.response as? HTTPURLResponse,
                   let response = responseAdapter.map(httpUrlResponse: urlResponse, data: nil, for: request),
-                  let downloadedFileLocation = self.downloadedFileLocation
-        {
+                  let downloadedFileLocation = self.downloadedFileLocation {
             let downloadResponse = DownloadResponse(fileLocation: downloadedFileLocation, respnse: response)
             result = .success(downloadResponse)
         } else {

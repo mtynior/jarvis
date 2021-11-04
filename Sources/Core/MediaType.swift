@@ -36,7 +36,7 @@ extension MediaType: Equatable {
     }
 }
 
-// MARK - CustomStringConvertible
+// MARK: - CustomStringConvertible
 extension MediaType: CustomStringConvertible {
     public var description: String {
         return value

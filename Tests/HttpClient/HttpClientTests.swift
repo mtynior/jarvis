@@ -333,7 +333,7 @@ extension HttpClientTests {
         
         let request = Request(url: "https://httpbin.org/post")
             .method(.post)
-            .body(BodyContent(string:  "Hello world"))
+            .body(BodyContent(string: "Hello world"))
         
         // when
         let response = try await client.upload(request)

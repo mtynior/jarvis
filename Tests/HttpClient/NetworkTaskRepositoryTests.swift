@@ -141,7 +141,7 @@ extension NetworkTaskRepositoryTests {
     }
 }
 
-// MARK:  - Helper
+// MARK: - Helper
 private extension NetworkTaskRepositoryTests {
     func makeTask() -> FetchDataTask {
         let request = Request().url("https://httpbin.org/get")

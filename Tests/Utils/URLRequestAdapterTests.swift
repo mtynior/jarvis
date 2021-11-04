@@ -22,7 +22,7 @@ final class URLRequestAdapterTests: XCTestCase {
     }
 }
 
-// MARK - Map URLs
+// MARK: - Map URLs
 extension URLRequestAdapterTests {
     func testMapFullUrl() {
         // given
@@ -69,7 +69,7 @@ extension URLRequestAdapterTests {
     }
 }
 
-// MARK - Map Request fields
+// MARK: - Map Request fields
 extension URLRequestAdapterTests {
     func testMapHeaders() {
         // given
@@ -77,7 +77,6 @@ extension URLRequestAdapterTests {
             .url("https://httpbin.org/get")
             .addHeader(name: "Content-Type", value: "application/json")
             .addHeader(name: "User-Agent", value: "Jarvis")
-        
         
         let configuration = HttpClient.Configuration()
         

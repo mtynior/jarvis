@@ -99,7 +99,7 @@ public final class UploadTask: DataFetchingTask {
 }
 
 // MARK: - UploadingTask
-internal extension UploadTask{
+internal extension UploadTask {
     func didReceiveData(_ data: Data) {
         if self.receivedDataBuffer == nil {
             self.receivedDataBuffer = data

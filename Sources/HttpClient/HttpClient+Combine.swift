@@ -20,7 +20,7 @@ public struct DataReponsePublisher: Publisher {
         self.task = task
     }
     
-    public func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = ResponseSubscriber<S, Self.Output>(task: task, downstream: subscriber)
         
         subscriber.receive(subscription: subscription)
@@ -40,7 +40,7 @@ public struct DownloadReponsePublisher: Publisher {
         self.task = task
     }
     
-    public func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = ResponseSubscriber<S, Self.Output>(task: task, downstream: subscriber)
         
         subscriber.receive(subscription: subscription)

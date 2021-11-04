@@ -31,7 +31,7 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: nil, for: testData.request)
         
-        //then
+        // then
         XCTAssertEqual(response?.statusCode, expectedStatusCode)
     }
     
@@ -41,7 +41,7 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: nil, for: testData.request)
         
-        //then
+        // then
         XCTAssertNotNil(response?.statusCode)
     }
     
@@ -56,7 +56,7 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: nil, for: testData.request)
         
-        //then
+        // then
         XCTAssertEqual(response?.headers.count, expectedHeaders.count)
         XCTAssertEqual(response?.headers.names.sorted(), expectedHeaders.keys.sorted())
         XCTAssertEqual(response?.headers.values.sorted(), expectedHeaders.values.sorted())
@@ -73,7 +73,7 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: expectedData, for: testData.request)
         
-        //then
+        // then
         XCTAssertEqual(response?.body?.data, expectedData)
     }
     
@@ -84,7 +84,7 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: nil, for: testData.request)
         
-        //then
+        // then
         XCTAssertNil(response?.body)
     }
     
@@ -102,12 +102,12 @@ extension URLResponseAdapterTests {
         // when
         let response = adpater.map(httpUrlResponse: testData.httpResponse, data: expectedData, for: testData.request)
         
-        //then
+        // then
         XCTAssertEqual(response?.body?.mediaType?.value, expectedContentType)
     }
 }
 
-// MARK - Helpers
+// MARK: - Helpers
 private extension URLResponseAdapterTests {
     func makeTestData(url: String = "https://httpbin.org/get", statusCode: Int = 200, headers: [String: String]? = nil) -> (request: Request, httpResponse: HTTPURLResponse) {
         let request = Request().url(url)

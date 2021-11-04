@@ -91,7 +91,6 @@ extension HttpUrl: CustomStringConvertible {
     }
 }
 
-
 // MARK: - HTTPUrlConvertible
 public protocol HttpUrlConvertible {
     func asHttpUrl() -> HttpUrl

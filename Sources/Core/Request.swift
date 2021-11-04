@@ -36,7 +36,7 @@ public extension Request {
     }
 }
 
-// MARK: -  Http Methods
+// MARK: - Http Methods
 public extension Request {
     func method(_ method: HttpMethod) -> Self {
         var copy = self
@@ -130,7 +130,7 @@ public extension Request {
     }
 }
 
-// MARK: -  Body
+// MARK: - Body
 public extension Request {
     func body(_ body: BodyContentRepresentable?) -> Self {
         var copy = self
