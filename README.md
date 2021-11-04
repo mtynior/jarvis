@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Jarvis</h1>
-    <h3>Simple HTTP Client</h3>
+    <h3>Simple Http Client written in Swift</h3>
 </div>
 <p align="center">
   <img src="https://img.shields.io/badge/language-Swift-orange" />
