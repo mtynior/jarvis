@@ -24,7 +24,7 @@ extension HttpClientTests {
     
     func testDeinitFinishesActiveTasks() {
         // given
-        let taskStatusExpectation = expectation(description: "Task should finished")
+        let taskStatusExpectation = expectation(description: "Task should finish")
         
         var configuration = HttpClient.Configuration.default
         configuration.automaticallyStartRequest = true
@@ -323,7 +323,6 @@ extension HttpClientTests {
         let result = try await client.download(request)
                 
         // then
-        XCTAssertNotNil(result.fileLocation)
         XCTAssertTrue(result.reponse!.isSuccess)
     }
     
@@ -343,30 +342,80 @@ extension HttpClientTests {
     }
 }
 
-/*
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
 extension HttpClientTests {
     func testSendPublisher() {
         // given
-        let taskStatusExpectation = expectation(description: "Task should finished")
-
+        let taskStatusExpectation = expectation(description: "Task should finish")
         let client = HttpClient()
-            
+        
         let request = Request()
-            .url(string: "https://httpbin.org/get")
+            .url("https://httpbin.org/get")
             .method(.get)
-                
+        
+        // when
         let cancellable = client.send(request)
             .publisher()
-            .map({ $0.body?.string() })
-            .sink(receiveCompletion: {
-                error in print(error)
-                
-            }, receiveValue: {
-                body in print(body)
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { response in
+                if response.isSuccess {
+                    taskStatusExpectation.fulfill()
+                }
             })
         
         // then
         waitForExpectations(timeout: 10)
+        print(cancellable) // to remove warning about unsused variable
+    }
+    
+    func testDownloadPublisher() {
+        // given
+        let taskStatusExpectation = expectation(description: "Task should finish")
+        let client = HttpClient()
+        
+        let request = Request()
+            .addHeader(name: "accept", value: "image/jpeg")
+            .url("https://httpbin.org/image/jpeg")
+        
+        // when
+        let cancellable = client.download(request)
+            .publisher()
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { result in
+                if result.reponse!.isSuccess {
+                    taskStatusExpectation.fulfill()
+                }
+            })
+        
+        // then
+        waitForExpectations(timeout: 10)
+        print(cancellable) // to remove warning about unsused variable
+    }
+    
+    func testUploadPublisher() {
+        // given
+        let taskStatusExpectation = expectation(description: "Task should finish")
+        let client = HttpClient()
+        
+        let request = Request(url: "https://httpbin.org/post")
+            .method(.post)
+            .body(BodyContent(string: "Hello world"))
+        
+        // when
+        let cancellable = client.upload(request)
+            .publisher()
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { response in
+                if response.isSuccess {
+                    taskStatusExpectation.fulfill()
+                }
+            })
+        
+        // then
+        waitForExpectations(timeout: 10)
+        print(cancellable) // to remove warning about unsused variable
     }
 }
-*/

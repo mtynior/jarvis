@@ -63,7 +63,7 @@ func login(_ userCredentials: Credentials) async throws -> LoginResponse? {
 ```swift
 let client = HttpClient()
 
-func getImage(from url: String, saveAs fileName: String) async throws {
+func getImage(from url: String) async throws {
   let request = Request(url: url)
 
   let result = try await client.download(request)

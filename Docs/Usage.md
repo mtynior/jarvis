@@ -34,6 +34,25 @@ let actualTask = client.send(request) { result in
 }
 ```
 
+### Publisher
+```swift
+var cancellable: AnyCancellable? 
+let client = HttpClient()
+
+let request = Request()
+  .url("https://httpbin.org/get")
+  .method(.get)
+        
+cancellable = client.send(request)
+  .publisher()
+  .map({ $0.body?.string() })
+  .sink(receiveCompletion: { error in
+    print(error)
+  }, receiveValue: { body in
+    print(body)
+  })
+```
+
 ## Sending Http POST Request
 ### Async/Await
 ```swift
@@ -126,7 +145,7 @@ func login(_ userCredentials: Credentials, completion: @escaping (Result<LoginRe
 ```swift
 let client = HttpClient()
 
-func getImage(from url: String, saveAs fileName: String) async throws {
+func getImage(from url: String) async throws {
   let request = Request(url: url)
 
   let result = try await client.download(request)
@@ -139,7 +158,7 @@ func getImage(from url: String, saveAs fileName: String) async throws {
 ```swift
 let client = HttpClient()
 
-func getImage(from url: String, saveAs fileName: String) {
+func getImage(from url: String) {
   let request = Request(url: url)
 
   client.download(request) { result in
@@ -151,6 +170,22 @@ func getImage(from url: String, saveAs fileName: String) {
     }
   }
 }
+```
+
+### Publisher
+```swift
+var cancellable: AnyCancellable? 
+let client = HttpClient()
+
+let request = Request(url: "file/url")
+
+cancellable = client.download(request)
+  .publisher()
+  .sink(receiveCompletion: { error in
+    print(error)
+  }, receiveValue: { result in
+    print(result)
+  })
 ```
 
 ## Downloading a file to specific location
@@ -233,6 +268,24 @@ func uploadImage(from url: URL) {
     }
   }
 }
+```
+
+### Publisher
+```swift
+var cancellable: AnyCancellable? 
+let client = HttpClient()
+
+let request = Request(url: "https://httpbin.org/post")
+  .method(.post)
+  .body(BodyContent(string: "Hello world"))
+
+cancellable = client.upload(request)
+  .publisher()
+  .sink(receiveCompletion: { error in
+    print(error)
+  }, receiveValue: { response in
+    print(response)
+  })
 ```
 
 ## Uploading a multipart content
