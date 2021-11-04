@@ -1,0 +1,21 @@
+name: Test Package (Production ENV) 
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test_package:
+    runs-on: macos-11
+
+    steps:
+      - name: Get Sources
+        uses: actions/checkout@v2
+
+      - name: Build Package
+        run: swift build -v
+
+      - name: Run tests
+        run: swift test
