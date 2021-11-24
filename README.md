@@ -40,7 +40,7 @@ let request = Request()
   .method(.post)
   .body(requestBody)
         
-let response = client.send(request)
+let response = try await client.send(request)
 
 print(response.body.string())
 ```
