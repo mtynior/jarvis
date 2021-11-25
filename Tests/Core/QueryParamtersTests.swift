@@ -81,8 +81,8 @@ extension QueryParametersTests {
         actualParameters.add(parameters: existingQueryParameters)
         
         // then
-        for (index, Parameter) in expectedQueryParameters.enumerated() {
-            XCTAssertEqual(actualParameters.parameters[index], Parameter)
+        for (index, parameter) in expectedQueryParameters.enumerated() {
+            XCTAssertEqual(actualParameters.parameters[index], parameter)
         }
     }
     
@@ -98,8 +98,8 @@ extension QueryParametersTests {
         actualQueryParameters.add(parameters: expectedQueryParameters)
         
         // then
-        for (index, Parameter) in expectedQueryParameters.enumerated() {
-            XCTAssertEqual(actualQueryParameters.parameters[index], Parameter)
+        for (index, parameter) in expectedQueryParameters.enumerated() {
+            XCTAssertEqual(actualQueryParameters.parameters[index], parameter)
         }
     }
     
@@ -115,8 +115,8 @@ extension QueryParametersTests {
         actualParameters.add(parameters: expectedQueryParameters)
         
         // then
-        for (index, Parameter) in expectedQueryParameters.enumerated() {
-            XCTAssertEqual(actualParameters.parameters[index], Parameter)
+        for (index, parameter) in expectedQueryParameters.enumerated() {
+            XCTAssertEqual(actualParameters.parameters[index], parameter)
         }
     }
     
@@ -132,8 +132,8 @@ extension QueryParametersTests {
         actualQueryParameters.set(parameter2)
         
         // then
-        for (index, Parameter) in expectedQueryParameters.enumerated() {
-            XCTAssertEqual(actualQueryParameters.parameters[index], Parameter)
+        for (index, parameter) in expectedQueryParameters.enumerated() {
+            XCTAssertEqual(actualQueryParameters.parameters[index], parameter)
         }
     }
     
@@ -167,8 +167,8 @@ extension QueryParametersTests {
         actualQueryParameters.remove(name: "pageNumber")
         
         // then
-        for (index, Parameter) in expectedQueryParameters.enumerated() {
-            XCTAssertEqual(actualQueryParameters.parameters[index], Parameter)
+        for (index, parameter) in expectedQueryParameters.enumerated() {
+            XCTAssertEqual(actualQueryParameters.parameters[index], parameter)
         }
     }
 }

@@ -43,11 +43,9 @@ public extension QueryParameters {
     mutating func set(_ parameter: Parameter) {
         var paramterAlredyExist = false
         
-        for (index, existingParameter) in parameters.enumerated() {
-            if existingParameter.name == parameter.name {
-                paramterAlredyExist = true
-                parameters[index].value = parameter.value
-            }
+        for (index, existingParameter) in parameters.enumerated() where existingParameter.name == parameter.name {
+            paramterAlredyExist = true
+            parameters[index].value = parameter.value
         }
         
         if !paramterAlredyExist {
@@ -89,7 +87,7 @@ extension QueryParameters {
 
 // MARK: - Equatable
 extension QueryParameters: Equatable {
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         guard lhs.count == rhs.count else {
             return false
         }
@@ -97,10 +95,8 @@ extension QueryParameters: Equatable {
         let sortedLhs = lhs.parameters.sorted(by: { $0.name < $1.name })
         let sortedRhs = rhs.parameters.sorted(by: { $0.name < $1.name })
 
-        for index in 0..<sortedLhs.count {
-            if sortedLhs[index] != sortedRhs[index] {
-                return false
-            }
+        for index in 0..<sortedLhs.count where sortedLhs[index] != sortedRhs[index] {
+            return false
         }
         
         return true
@@ -146,4 +142,3 @@ extension QueryParameters.Parameter {
         return URLQueryItem(name: name, value: value)
     }
 }
-

@@ -62,7 +62,7 @@ public extension HttpUrl {
 
 // MARK: - Equatable
 extension HttpUrl: Equatable {
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         let isSameScheme = lhs.urlComponents?.scheme?.lowercased() == rhs.urlComponents?.scheme?.lowercased()
         let isSameHost = lhs.urlComponents?.host?.lowercased() == rhs.urlComponents?.host?.lowercased()
         let isSamePath = lhs.urlComponents?.path.lowercased().removingSuffix("/") == rhs.urlComponents?.path.lowercased().removingSuffix("/")

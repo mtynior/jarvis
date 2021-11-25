@@ -8,6 +8,8 @@
 import XCTest
 @testable import Jarvis
 
+// swiftlint:disable file_length
+
 final class HttpClientTests: XCTestCase {
 }
 

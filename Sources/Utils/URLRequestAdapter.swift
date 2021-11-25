@@ -24,8 +24,6 @@ public final class URLRequestAdapter: URLRequestAdapting {
             urlRequest.setValue($0.value, forHTTPHeaderField: $0.name)
         }
         
-       
-        
         // Set HTTP method
         urlRequest.httpMethod = request.method.rawValue
         
@@ -58,7 +56,7 @@ private extension URLRequestAdapter {
         }
         
         // Check if there are any query paramaters, if so append them to the url.
-        // We need this verification. Otherwise url e.g.: https://httpbin.org/get becomes https://httpbin.org/get? which is valid url, but not elegant
+        // We need this verification. Otherwise url e.g.: https://httpbin.org/get becomes https://httpbin.org/get? which is valid url, but not elegant.
         if !request.queryParameters.parameters.isEmpty {
             urlComponents.queryItems = request.queryParameters.parameters.map { $0.urlQueryItem }
         }

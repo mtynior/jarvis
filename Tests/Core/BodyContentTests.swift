@@ -8,6 +8,8 @@
 import XCTest
 @testable import Jarvis
 
+// swiftlint:disable force_try
+
 final class BodyContentTests: XCTestCase {
 }
 
