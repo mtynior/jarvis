@@ -18,8 +18,8 @@ public final class URLResponseAdapter: URLResponseAdapting {
         let statusMessage = HTTPURLResponse.localizedString(forStatusCode: statusCode)
         
         // Headers
-        let fieldsArray = httpUrlResponse.allHeaderFields.map({ (k, v) in
-            return ("\(k)", "\(v)")
+        let fieldsArray = httpUrlResponse.allHeaderFields.map({ (key, value) in
+            return ("\(key)", "\(value)")
         })
         
         let headers = HttpHeaders(dictionary: Dictionary(uniqueKeysWithValues: fieldsArray))

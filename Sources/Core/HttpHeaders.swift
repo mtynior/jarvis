@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  HttpHeaders.swift
 //  Jarvis
 //
 //  Created by Michal on 11/10/2020.
@@ -43,11 +43,9 @@ public extension HttpHeaders {
     mutating func set(_ field: Field) {
         var fieldAlredyExist = false
         
-        for (index, existingField) in fields.enumerated() {
-            if existingField.name == field.name {
-                fieldAlredyExist = true
-                fields[index].value = field.value
-            }
+        for (index, existingField) in fields.enumerated() where existingField.name == field.name {
+            fieldAlredyExist = true
+            fields[index].value = field.value
         }
         
         if !fieldAlredyExist {
@@ -89,7 +87,7 @@ extension HttpHeaders {
 
 // MARK: - Equatable
 extension HttpHeaders: Equatable {
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         guard lhs.count == rhs.count else {
             return false
         }
@@ -97,10 +95,8 @@ extension HttpHeaders: Equatable {
         let sortedLhs = lhs.fields.sorted(by: { $0.name < $1.name })
         let sortedRhs = rhs.fields.sorted(by: { $0.name < $1.name })
 
-        for index in 0..<sortedLhs.count {
-            if sortedLhs[index] != sortedRhs[index] {
-                return false
-            }
+        for index in 0..<sortedLhs.count where sortedLhs[index] != sortedRhs[index] {
+            return false
         }
         
         return true

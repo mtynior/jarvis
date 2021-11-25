@@ -61,7 +61,7 @@ extension NetworkTaskRepository: Collection {
         return tasks.endIndex
     }
     
-    public func index(after i: Int) -> Int {
-        return tasks.index(after: i)
+    public func index(after index: Int) -> Int {
+        return tasks.index(after: index)
     }
 }

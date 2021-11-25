@@ -67,6 +67,42 @@ extension URLRequestAdapterTests {
         // then
         XCTAssertNil(urlRequest)
     }
+    
+    func testURLWithQueryParameters() {
+        // given
+        let expectedUrl = HttpUrl("https://httpbin.org/get?api_key=123abc9983&id=1313")
+        
+        let request = Request()
+            .url(expectedUrl)
+            .addQueryParameter(name: "api_key", value: "123abc9983")
+            .addQueryParameter(name: "id", value: "1313")
+
+        let configuration = HttpClient.Configuration.default
+        
+        // when
+        let urlRequest = adpater.map(request: request, usingConfiguration: configuration)
+        
+        // then
+        XCTAssertEqual(urlRequest?.url, expectedUrl.fullUrl)
+    }
+    
+    func testURLQueryParametersEncoding() {
+        // given
+        let expectedUrl = HttpUrl("https://httpbin.org/get?api_key=123abc9983&question=Luke%20%26%20Leia%20are%20you%20ok?!")
+        
+        let request = Request()
+            .url(expectedUrl)
+            .addQueryParameter(name: "api_key", value: "123abc9983")
+            .addQueryParameter(name: "question", value: "Luke & Leia are you ok?!")
+
+        let configuration = HttpClient.Configuration.default
+        
+        // when
+        let urlRequest = adpater.map(request: request, usingConfiguration: configuration)
+        
+        // then
+        XCTAssertEqual(urlRequest?.url, expectedUrl.fullUrl)
+    }
 }
 
 // MARK: - Map Request fields
