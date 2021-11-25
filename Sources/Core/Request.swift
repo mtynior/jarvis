@@ -13,6 +13,7 @@ public struct Request {
     private(set) var method: HttpMethod = .get
     private(set) var body: BodyContentRepresentable?
     private(set) var headers: HttpHeaders = HttpHeaders()
+    private(set) var queryParameters: QueryParameters = QueryParameters()
  
     public init() { }
     
@@ -108,7 +109,7 @@ public extension Request {
     }
 }
 
-// MARK: - Header
+// MARK: - Headers
 public extension Request {
     func addHeader(name: String, value: String) -> Self {
         var copy = self
@@ -131,6 +132,33 @@ public extension Request {
     func removeHeader(name: String) -> Self {
         var copy = self
         copy.headers.remove(name: name)
+        return copy
+    }
+}
+
+// MARK: - Query Parameters
+public extension Request {
+    func addQueryParameter(name: String, value: String) -> Self {
+        var copy = self
+        copy.queryParameters.add(QueryParameters.Parameter(name: name, value: value))
+        return copy
+    }
+    
+    func addQueryParameters(_ parameters: QueryParameters) -> Self {
+        var copy = self
+        copy.queryParameters.add(parameters: parameters)
+        return copy
+    }
+    
+    func setQueryParameter(name: String, value: String) -> Self {
+        var copy = self
+        copy.queryParameters.set(QueryParameters.Parameter(name: name, value: value))
+        return copy
+    }
+    
+    func removeQueryParameter(name: String) -> Self {
+        var copy = self
+        copy.queryParameters.remove(name: name)
         return copy
     }
 }

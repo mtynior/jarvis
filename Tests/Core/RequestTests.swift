@@ -273,6 +273,62 @@ extension RequestTests {
     }
 }
 
+// MARK: - Query Paramters
+extension RequestTests {
+    func testAddQueryParameter() {
+        // given
+        let param1 = QueryParameters.Parameter(name: "api_key", value: "349-aabd-135")
+        let expectedParamters = QueryParameters(parameters: [param1])
+        
+        // when
+        let request = Request()
+            .addQueryParameter(name: "api_key", value: "349-aabd-135")
+        
+        // then
+        XCTAssertEqual(request.queryParameters, expectedParamters)
+    }
+    
+    func testAddQueryParameters() {
+        // given
+        let param1 = QueryParameters.Parameter(name: "api_key", value: "349-aabd-135")
+        let param2 = QueryParameters.Parameter(name: "userId", value: "1313")
+        let expectedParameters = QueryParameters(parameters: [param1, param2])
+        
+        // when
+        let request = Request()
+            .addQueryParameters(expectedParameters)
+        
+        // then
+        XCTAssertEqual(request.queryParameters, expectedParameters)
+    }
+    
+    func testSetQueryParameter() {
+        // given
+        let param1 = QueryParameters.Parameter(name: "api_key", value: "349-aabd-135")
+        let expectedParameters = QueryParameters(parameters: [param1])
+        
+        // when
+        let request = Request()
+            .addQueryParameter(name: "api_key", value: "aabd-349-123")     // add parameter
+            .setQueryParameter(name: "api_key", value: "349-aabd-135")     // replace parameter value
+
+        // then
+        XCTAssertEqual(request.queryParameters, expectedParameters)
+    }
+    
+    func testRemoveQueryParameter() {
+        // given
+        
+        // when
+        let request = Request()
+            .addHeader(name: "api_key", value: "application/json")
+            .removeHeader(name: "api_key")
+
+        // then
+        XCTAssertEqual(request.headers.count, 0)
+    }
+}
+
 // MARK: - Body
 extension RequestTests {
     func testBody() {

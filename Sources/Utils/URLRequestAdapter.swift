@@ -24,6 +24,8 @@ public final class URLRequestAdapter: URLRequestAdapting {
             urlRequest.setValue($0.value, forHTTPHeaderField: $0.name)
         }
         
+       
+        
         // Set HTTP method
         urlRequest.httpMethod = request.method.rawValue
         
@@ -43,10 +45,23 @@ public final class URLRequestAdapter: URLRequestAdapting {
 
 private extension URLRequestAdapter {
     func urlFromRequest(_ request: Request, configuration: HttpClient.Configuration) -> URL? {
-        switch request.target {
-        case .url(let httpUrl): return httpUrl.fullUrl
-        case .endpoint(let endpoint): return configuration.baseUrl?.fullUrl?.appendingPathComponent(endpoint)
-        case .none: return nil
+        let requestUrl: URL? = {
+            switch request.target {
+            case .url(let httpUrl): return httpUrl.fullUrl
+            case .endpoint(let endpoint): return configuration.baseUrl?.fullUrl?.appendingPathComponent(endpoint)
+            case .none: return nil
+            }
+        }()
+        
+        guard let requestUrl = requestUrl, let urlComponents = NSURLComponents(url: requestUrl, resolvingAgainstBaseURL: true) else {
+            return nil
         }
+        
+        // Check if there are any query paramaters, if so append them to the url.
+        // We need this verification. Otherwise url e.g.: https://httpbin.org/get becomes https://httpbin.org/get? which is valid url, but not elegant
+        if !request.queryParameters.parameters.isEmpty {
+            urlComponents.queryItems = request.queryParameters.parameters.map { $0.urlQueryItem }
+        }
+        return urlComponents.url
     }
 }

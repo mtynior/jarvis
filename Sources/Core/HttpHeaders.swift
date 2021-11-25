@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  HttpHeaders.swift
 //  Jarvis
 //
 //  Created by Michal on 11/10/2020.
