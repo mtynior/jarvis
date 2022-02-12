@@ -138,7 +138,7 @@ func uploadToImgur(fileUrl: URL, mediaType: String) async throws {
 }
 ```
 
-### Instead of Swift's new concurency system, you can also use calbacks and Combine publishers. More information is available in the [documnetation](Docs/Usage.md).
+### Instead of Swift's new concurency system, you can also use calbacks and Combine publishers. More information is available in the [documentation](Docs/Usage.md).
 
 ## TODO
 - [ ] Certifiacate pining
